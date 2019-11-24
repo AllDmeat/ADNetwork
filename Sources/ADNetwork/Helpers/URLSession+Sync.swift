@@ -21,8 +21,4 @@ extension URLSession {
         
         return (data, response, error)
     }
-    
-    private var timeout: DispatchTime {
-        return DispatchTime.now() + DispatchTimeInterval.seconds(Int(self.configuration.timeoutIntervalForRequest))
-    }
 }
