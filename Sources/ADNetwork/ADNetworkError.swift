@@ -1,6 +1,6 @@
 import Foundation
 
-enum NetworkError: Error {
+enum ADNetworkError: Error {
     case noData
     case dataIsNotJSON
 }

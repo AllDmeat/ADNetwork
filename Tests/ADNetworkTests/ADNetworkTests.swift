@@ -1,8 +1,8 @@
 import XCTest
-@testable import Network
+@testable import ADNetwork
 
-final class NetworkTests: XCTestCase {
-    var network: Network!
+final class ADNetworkTests: XCTestCase {
+    var network: ADNetwork!
     
     func test_DataIsLoaded_When_URLIsCorrect() throws {
         let request = URLRequest.Example.Correct.json
@@ -12,13 +12,13 @@ final class NetworkTests: XCTestCase {
 
     func test_DataIsNotLoaded_AndErrorThrown_When_URLIsIncorrect() throws {
         let session = URLSession(with: TimeInterval.Timeout.short)
-        let network = Network(with: session)
+        let network = ADNetwork(with: session)
         let request = URLRequest.Example.Incorrect.invalidUrl
         XCTAssertThrowsError(try network.data(for: request))
     }
 }
 
-extension NetworkTests {
+extension ADNetworkTests {
     func test_JsonIsLoaded_When_ResponseIsJson() {
         let request = URLRequest.Example.Correct.json
         XCTAssertNoThrow(try network.json(for: request))
@@ -30,7 +30,7 @@ extension NetworkTests {
     }
 }
 
-extension NetworkTests {
+extension ADNetworkTests {
     func test_ModelIsLoaded_When_DtoIsCorrect() {
         let request = URLRequest.Example.Correct.json
         XCTAssertNoThrow(try network.model(for: request, with: DTO.Example.Correct.self))
@@ -44,9 +44,9 @@ extension NetworkTests {
 
 // MARK: - Setup
 
-extension NetworkTests {
+extension ADNetworkTests {
     override func setUp() {
-        network = Network()
+        network = ADNetwork()
     }
     
     override func tearDown() {

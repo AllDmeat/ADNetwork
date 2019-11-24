@@ -2,7 +2,7 @@ import Foundation
 
 public typealias JSON = [String: Any]
 
-public class Network {
+public class ADNetwork {
     private let urlSession: URLSession
     
     public init(with urlSession: URLSession = URLSession(configuration: .default)) {
@@ -19,7 +19,7 @@ public class Network {
             return data
         }
         
-        throw NetworkError.noData
+        throw ADNetworkError.noData
     }
     
     public func json(for request: URLRequest) throws -> JSON {
@@ -29,7 +29,7 @@ public class Network {
             return json
         }
         
-        throw NetworkError.dataIsNotJSON
+        throw ADNetworkError.dataIsNotJSON
     }
     
     public func model<Model: Codable>(for request: URLRequest,
