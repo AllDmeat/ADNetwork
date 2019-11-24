@@ -5,7 +5,7 @@ public typealias JSON = [String: Any]
 public class Network {
     private let urlSession: URLSession
     
-    init(with urlSession: URLSession = URLSession(configuration: .default)) {
+    public init(with urlSession: URLSession = URLSession(configuration: .default)) {
         self.urlSession = urlSession
     }
     
