@@ -5,6 +5,8 @@ public typealias JSON = [String: Any]
 public class ADNetwork {
     private let urlSession: URLSession
     
+    public weak var authErrorHandler: AuthErrorHandler?
+    
     public init(with urlSession: URLSession = URLSession(configuration: .default)) {
         self.urlSession = urlSession
     }

@@ -17,7 +17,7 @@ extension URLSession {
         }
         dataTask.resume()
         
-        _ = semaphore.wait()
+        semaphore.wait()
         
         return (data, response, error)
     }
