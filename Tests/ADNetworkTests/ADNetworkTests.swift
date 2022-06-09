@@ -4,41 +4,63 @@ import XCTest
 final class ADNetworkTests: XCTestCase {
     var network: ADNetwork!
     
-    func test_DataIsLoaded_When_URLIsCorrect() throws {
+    func test_DataIsLoaded_When_URLIsCorrect() async throws {
         let request = URLRequest.Example.Correct.json
-        XCTAssertNoThrow(try network.data(for: request))
+        let response = try await network.data(for: request)
+        XCTAssertNotNil(response)
     }
 
 
-    func test_DataIsNotLoaded_AndErrorThrown_When_URLIsIncorrect() throws {
-        let session = URLSession(with: TimeInterval.Timeout.short)
-        let network = ADNetwork(with: session)
+    func test_DataIsNotLoaded_AndErrorThrown_When_URLIsIncorrect() async throws {
         let request = URLRequest.Example.Incorrect.invalidUrl
-        XCTAssertThrowsError(try network.data(for: request))
+        
+        do {
+            _ = try await network.data(for: request)
+            XCTFail("Should have thrown an error")
+        } catch {
+            XCTAssertNotNil(error)
+        }
     }
 }
 
 extension ADNetworkTests {
-    func test_JsonIsLoaded_When_ResponseIsJson() {
+    func test_JsonIsLoaded_When_ResponseIsJson() async throws {
         let request = URLRequest.Example.Correct.json
-        XCTAssertNoThrow(try network.json(for: request))
+        let response = try await network.json(for: request)
+        XCTAssertNotNil(response)
     }
-    
-    func test_JsonIsNotLoaded_AndErrorThrown_When_ResponseIsNotJson() {
+
+    func test_JsonIsNotLoaded_AndErrorThrown_When_ResponseIsNotJson() async throws {
         let request = URLRequest.Example.Correct.html
-        XCTAssertThrowsError(try network.json(for: request))
+        
+        do {
+            _ = try await network.json(for: request)
+            XCTFail("Should have thrown an error")
+        } catch {
+            XCTAssertNotNil(error)
+        }
     }
 }
 
 extension ADNetworkTests {
-    func test_ModelIsLoaded_When_DtoIsCorrect() {
+    func test_ModelIsLoaded_When_DtoIsCorrect() async throws {
         let request = URLRequest.Example.Correct.json
-        XCTAssertNoThrow(try network.model(for: request, with: DTO.Example.Correct.self))
+        let model = try await network.model(for: request, with: DTO.Example.Correct.self)
+        XCTAssertEqual(model.title, "delectus aut autem")
+        XCTAssertEqual(model.userId, 1)
+        XCTAssertEqual(model.id, 1)
+        XCTAssertEqual(model.completed, false)
     }
-    
-    func test_ModelIsNotLoaded_When_DtoIsWrong() {
+
+    func test_ModelIsNotLoaded_When_DtoIsWrong() async throws {
         let request = URLRequest.Example.Correct.json
-        XCTAssertThrowsError(try network.model(for: request, with: DTO.Example.Incorrect.self))
+        
+        do {
+            _ = try await network.model(for: request, with: DTO.Example.Incorrect.self)
+            XCTFail("Should have thrown an error")
+        } catch {
+            XCTAssertNotNil(error)
+        }
     }
 }
 

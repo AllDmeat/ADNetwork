@@ -11,21 +11,13 @@ public class ADNetwork {
         self.urlSession = urlSession
     }
     
-    public func data(for request: URLRequest) throws -> Data {
-        let (data, _, error) = urlSession.syncDataTask(with: request)
-        if let error = error {
-            throw error
-        }
-        
-        if let data = data {
-            return data
-        }
-        
-        throw ADNetworkError.noData
+    public func data(for request: URLRequest) async throws -> Data {
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return data
     }
     
-    public func json(for request: URLRequest) throws -> JSON {
-        let data = try self.data(for: request)
+    public func json(for request: URLRequest) async throws -> JSON {
+        let data = try await data(for: request)
         
         if let json = try JSONSerialization.jsonObject(with: data, options: []) as? JSON {
             return json
@@ -35,8 +27,8 @@ public class ADNetwork {
     }
     
     public func model<Model: Codable>(for request: URLRequest,
-                                      with type: Model.Type) throws -> Model {
-        let data = try self.data(for: request)
+                                      with type: Model.Type) async throws -> Model {
+        let data = try await data(for: request)
         return try JSONDecoder().decode(type, from: data)
     }
 }

@@ -8,7 +8,11 @@ extension URLRequest {
         }
         
         struct Incorrect {
-            static let invalidUrl = URLRequest(url: URL.Example.Incorrect.invalidUrl)
+            static let invalidUrl: URLRequest = {
+                var request = URLRequest(url: URL.Example.Incorrect.invalidUrl)
+                request.timeoutInterval = 1
+                return request
+            }()
         }
     }
 }
