@@ -43,4 +43,4 @@ You can also plug in an `AuthErrorHandler` to centralize token refresh logic or 
 Run commands from the repo root so SwiftPM locates `Package.swift`.
 
 ## Contributing
-See `AGENTS.md` for repository guidelines, coding standards, and commit/PR expectations. Run `swiftformat Sources Tests` and ensure tests pass before opening a pull request, and reference any related issues.
+See `AGENTS.md` for repository guidelines, coding standards, and commit/PR expectations. Use the repo-provided `swiftformat` task to keep Swift files formatted and linted, then run tests before opening a pull request and reference any related issues.
