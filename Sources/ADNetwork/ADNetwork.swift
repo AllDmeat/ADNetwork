@@ -26,8 +26,8 @@ public class ADNetwork {
         throw ADNetworkError.dataIsNotJSON
     }
     
-    public func model<Model: Codable>(for request: URLRequest,
-                                      with type: Model.Type) async throws -> Model {
+    public func model<Model: Decodable>(for request: URLRequest,
+                                        with type: Model.Type) async throws -> Model {
         let data = try await data(for: request)
         return try JSONDecoder().decode(type, from: data)
     }
