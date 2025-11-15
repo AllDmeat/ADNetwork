@@ -1,6 +1,6 @@
 # ADNetwork
 
-[![CI](https://github.com/AllDmeat/ADNetwork/actions/workflows/ci.yml/badge.svg)](https://github.com/AllDmeat/ADNetwork/actions/workflows/ci.yml)
+[![test](https://github.com/AllDmeat/ADNetwork/actions/workflows/test.yml/badge.svg)](https://github.com/AllDmeat/ADNetwork/actions/workflows/test.yml)
 
 ADNetwork is a lightweight Swift networking layer that wraps `URLSession` to fetch raw `Data`, deserialize JSON dictionaries, or decode strongly typed `Codable` models. It ships as a Swift Package that targets iOS 15+ and macOS 11+, making it easy to embed in apps or shared frameworks.
 
