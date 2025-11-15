@@ -12,7 +12,7 @@ Sources live in `Sources/ADNetwork`, with the public facade `ADNetwork.swift`, e
 `swift package clean && swift package resolve` resets build artifacts and re-fetches dependencies after editing `Package.swift`. Always run commands from the repo root so SwiftPM can locate `Package.swift`.
 
 ## Coding Style & Naming Conventions
-Use 4 spaces for indentation, brace-on-same-line style, and keep helpers in extensions (e.g., `URLSession+Sync`). Public APIs are `UpperCamelCase`, enum cases such as `ADNetworkError.dataIsNotJSON` stay `lowerCamelCase`, and tests should follow the `test_Action_When_Condition` convention shown in `ADNetworkTests`. Prefer lightweight doc comments when exposing new public types or behaviors.
+Use 4 spaces for indentation, brace-on-same-line style, and keep helpers in extensions (e.g., `URLSession+Sync`). Public APIs are `UpperCamelCase`, enum cases such as `ADNetworkError.dataIsNotJSON` stay `lowerCamelCase`, and tests should follow the `test_Action_When_Condition` convention shown in `ADNetworkTests`. Prefer lightweight doc comments when exposing new public types or behaviors. Run `swiftformat Sources Tests` (config in `.swiftformat`) before committing so style stays consistent.
 
 ## Testing Guidelines
 All tests use XCTest with async/await. Prefer deterministic fixtures such as `URLRequest.Example.Correct.json` and keep timeout intervals low when asserting failures (`timeoutInterval = 1` in `URLRequest.Example.Incorrect`). Cover both success and failure paths whenever you add an API surface, and favor local stubs over live network calls before merging to avoid flakiness. Aim for proportional coverage—the number of new lines in `Sources/` should be reflected by tests in `Tests/`.

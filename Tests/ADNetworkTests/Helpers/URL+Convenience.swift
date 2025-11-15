@@ -1,13 +1,13 @@
 import Foundation
 
 extension URL {
-    struct Example {
-        struct Correct {
+    enum Example {
+        enum Correct {
             static let json = URL(string: "https://jsonplaceholder.typicode.com/todos/1")!
             static let google = URL(string: "https://google.com")!
         }
-        
-        struct Incorrect {
+
+        enum Incorrect {
             static let invalidUrl = URL(string: "https://gooooogle.com")!
         }
     }
