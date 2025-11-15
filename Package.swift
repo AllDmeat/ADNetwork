@@ -28,5 +28,6 @@ let package = Package(
         .testTarget(
             name: "ADNetworkTests",
             dependencies: ["ADNetwork"]),
-    ]
+    ],
+    swiftLanguageModes: [.v6]
 )
