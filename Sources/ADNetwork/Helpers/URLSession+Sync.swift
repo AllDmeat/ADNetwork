@@ -1,7 +1,7 @@
 import Foundation
 
-public extension URLSession {
-    func syncDataTask(with request: URLRequest) -> (Data?, URLResponse?, Error?) {
+extension URLSession {
+    public func syncDataTask(with request: URLRequest) -> (Data?, URLResponse?, Error?) {
         var data: Data?
         var response: URLResponse?
         var error: Error?

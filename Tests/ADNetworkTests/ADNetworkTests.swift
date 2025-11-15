@@ -1,5 +1,6 @@
-@testable import ADNetwork
 import XCTest
+
+@testable import ADNetwork
 
 final class ADNetworkTests: XCTestCase {
     var network: ADNetwork!

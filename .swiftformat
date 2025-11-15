@@ -1,8 +1,0 @@
---swiftversion 5.6
---indent 4
---tabwidth 4
---maxwidth 120
---stripunusedargs closure-only
---self init-only
---importgrouping alphabetized
---disable wrapMultilineStatementBraces
