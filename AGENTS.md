@@ -9,7 +9,7 @@ Sources live in `Sources/ADNetwork`, with the public facade `ADNetwork.swift`, e
 `swift test --parallel` runs the entire XCTest suite (covering async tests) and is required before every push.  
 `swift test --filter ADNetworkTests/test_ModelIsLoaded_When_DtoIsCorrect` is useful for iterating on a single scenario.  
 `xcodebuild test -scheme ADNetwork-Package -destination 'platform=iOS Simulator,name=iPhone 15'` mirrors CI when reproducing simulator-only bugs.  
-`swift package clean && swift package resolve` resets build artifacts and re-fetches dependencies after editing `Package.swift`. Always run commands from the repo root so SwiftPM can locate `Package.swift`. GitHub Actions (`.github/workflows/test.yml`) runs the Release build plus parallel tests on macOS 14, so duplicate that locally before pushing.
+`swift package clean && swift package resolve` resets build artifacts and re-fetches dependencies after editing `Package.swift`. Always run commands from the repo root so SwiftPM can locate `Package.swift`. GitHub Actions (`.github/workflows/test.yml`) runs `swift build` + `swift test --parallel` on macOS 15 for every pull request, so duplicate that locally before pushing.
 
 ## Coding Style & Naming Conventions
 Use 4 spaces for indentation, brace-on-same-line style, and keep helpers in extensions (e.g., `URLSession+Sync`). Public APIs are `UpperCamelCase`, enum cases such as `ADNetworkError.dataIsNotJSON` stay `lowerCamelCase`, and tests should follow the `test_Action_When_Condition` convention shown in `ADNetworkTests`. Prefer lightweight doc comments when exposing new public types or behaviors.
