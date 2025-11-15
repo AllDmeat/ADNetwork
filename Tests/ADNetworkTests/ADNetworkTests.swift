@@ -24,13 +24,13 @@ final class ADNetworkTests: XCTestCase {
 }
 
 extension ADNetworkTests {
-    func test_JsonIsLoaded_When_ResponseIsJson() async throws {
+    func testJsonIsLoadedWhenResponseIsJson() async throws {
         let request = URLRequest.Example.Correct.json
         let response = try await network.json(for: request)
         XCTAssertNotNil(response)
     }
 
-    func test_JsonIsNotLoaded_AndErrorThrown_When_ResponseIsNotJson() async throws {
+    func testJsonIsNotLoadedAndErrorThrownWhenResponseIsNotJson() async throws {
         let request = URLRequest.Example.Correct.html
 
         do {
@@ -43,7 +43,7 @@ extension ADNetworkTests {
 }
 
 extension ADNetworkTests {
-    func test_ModelIsLoaded_When_DtoIsCorrect() async throws {
+    func testModelIsLoadedWhenDtoIsCorrect() async throws {
         let request = URLRequest.Example.Correct.json
         let model = try await network.model(for: request, with: DTO.Example.Correct.self)
         XCTAssertEqual(model.title, "delectus aut autem")
@@ -52,7 +52,7 @@ extension ADNetworkTests {
         XCTAssertEqual(model.completed, false)
     }
 
-    func test_ModelIsNotLoaded_When_DtoIsWrong() async throws {
+    func testModelIsNotLoadedWhenDtoIsWrong() async throws {
         let request = URLRequest.Example.Correct.json
 
         do {
