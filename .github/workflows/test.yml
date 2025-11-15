@@ -15,6 +15,9 @@ jobs:
       - name: Show toolchain
         run: swift --version
 
+      - name: Lint formatting
+        run: swift format lint --configuration .swift-format --recursive Sources Tests
+
       - name: Build
         run: swift build
 
