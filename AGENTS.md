@@ -1,7 +1,7 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-Sources live in `Sources/ADNetwork`, with the public facade `ADNetwork.swift`, error types in `ADNetworkError.swift`, authentication hooks in `AuthErrorHandler.swift`, and synchronous helpers inside `Helpers/`. Tests mirror this layout under `Tests/ADNetworkTests`, with fixtures defined in `Helpers/URLRequest+Convenience.swift` and related files. Keep release automation assets in `fastlane/` and update them only when distribution or CI requirements change.
+Sources live in `Sources/ADNetwork`, with the public facade `ADNetwork.swift`, error types in `ADNetworkError.swift`, authentication hooks in `AuthErrorHandler.swift`, and synchronous helpers inside `Helpers/`. Tests mirror this layout under `Tests/ADNetworkTests`, with fixtures defined in `Helpers/URLRequest+Convenience.swift` and related files.
 
 ## Build, Test & Development Commands
 `swift build` compiles the library for the active SDK and should report **Build Succeeded** before code review.  
@@ -18,4 +18,4 @@ Use 4 spaces for indentation, brace-on-same-line style, and keep helpers in exte
 All tests use XCTest with async/await. Prefer deterministic fixtures such as `URLRequest.Example.Correct.json` and keep timeout intervals low when asserting failures (`timeoutInterval = 1` in `URLRequest.Example.Incorrect`). Cover both success and failure paths whenever you add an API surface, and favor local stubs over live network calls before merging to avoid flakiness. Aim for proportional coverage—the number of new lines in `Sources/` should be reflected by tests in `Tests/`.
 
 ## Commit & Pull Request Guidelines
-Recent history uses imperative, concise titles (e.g., "Bump addressable from 2.7.0 to 2.8.1"), so follow the same format and keep subjects under 72 characters. Describe the change, list validation commands (at minimum `swift test --parallel`), and link relevant issues in each PR. Include screenshots or sample payloads when user-visible behavior changes, and request review whenever you touch public APIs or fastlane automation.
+Recent history uses imperative, concise titles (e.g., "Bump addressable from 2.7.0 to 2.8.1"), so follow the same format and keep subjects under 72 characters. Describe the change, list validation commands (at minimum `swift test --parallel`), and link relevant issues in each PR. Include screenshots or sample payloads when user-visible behavior changes, and request review whenever you touch public APIs or CI automation.
