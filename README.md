@@ -43,7 +43,4 @@ You can also plug in an `AuthErrorHandler` to centralize token refresh logic or 
 Run commands from the repo root so SwiftPM locates `Package.swift`.
 
 ## Contributing
-See `AGENTS.md` for repository guidelines, coding standards, and commit/PR expectations. Use the official `swift format` command (config in `.swift-format`) to keep code formatted/linted, then run tests before opening a pull request and reference any related issues. Dependabot opens weekly PRs for SwiftPM, Bundler, and GitHub Actions dependencies—treat those the same as manual submissions (run tests, review changelogs).
-
-## Releases
-Pushing a tag that matches `v*` triggers `.github/workflows/release.yml`, which creates a GitHub Release with auto-generated notes comparing the new tag to the previous one.
+See `AGENTS.md` for repository guidelines, coding standards, and commit/PR expectations. Use the official `swift format` command (config in `.swift-format`) to keep code formatted/linted, then run tests before opening a pull request and reference any related issues.
