@@ -1,6 +1,6 @@
 //
 //  AuthErrorHandler.swift
-//  
+//
 //
 //  Created by Алексей Берёзка on 28.02.2021.
 //
