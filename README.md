@@ -4,6 +4,11 @@
 
 ADNetwork is a lightweight Swift networking layer that wraps `URLSession` to fetch raw `Data`, deserialize JSON dictionaries, or decode strongly typed `Codable` models. It ships as a Swift Package that targets iOS 15+ and macOS 11+, making it easy to embed in apps or shared frameworks.
 
+## Requirements
+- Swift 5.6+
+- Xcode 15 or SwiftPM CLI
+- iOS 15 / macOS 11 deployment targets
+
 ## Installation
 Add the repository URL to your Xcode project or `Package.swift` dependencies:
 
