@@ -16,7 +16,7 @@ jobs:
         run: swift --version
 
       - name: Lint formatting
-        run: swift format lint --configuration .swift-format --recursive Sources Tests
+        run: swift format lint --strict --configuration .swift-format --recursive Sources Tests
 
       - name: Build
         run: swift build
