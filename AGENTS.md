@@ -4,7 +4,7 @@
 Sources live in `Sources/ADNetwork`, with the public facade `ADNetwork.swift`, error types in `ADNetworkError.swift`, authentication hooks in `AuthErrorHandler.swift`, and synchronous helpers inside `Helpers/`. Tests mirror this layout under `Tests/ADNetworkTests`, with fixtures defined in `Helpers/URLRequest+Convenience.swift` and related files.
 
 ## Build, Test & Development Commands
-`swift build` compiles the library using the Swift 6.2 toolchain and should report **Build Succeeded** before code review.  
+`swift build` compiles the library for the active SDK and should report **Build Succeeded** before code review.  
 `swift build -c release` verifies the Release configuration that you ship to apps via Swift Package Manager.  
 `swift test --parallel` runs the entire XCTest suite (covering async tests) and is required before every push.  
 `swift test --filter ADNetworkTests/test_ModelIsLoaded_When_DtoIsCorrect` is useful for iterating on a single scenario.  
