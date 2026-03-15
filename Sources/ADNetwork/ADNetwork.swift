@@ -11,7 +11,7 @@ final public class ADNetwork: Sendable {
     }
 
     public func data(for request: URLRequest) async throws -> Data {
-        let (data, _) = try await URLSession.shared.data(for: request)
+        let (data, _) = try await urlSession.data(for: request)
         return data
     }
 
